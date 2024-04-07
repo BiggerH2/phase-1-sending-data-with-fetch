@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Submit Data Example</title>
+</head>
+<body>
+  <h1>Submit Data Example</h1>
+  
+  <form id="dataForm">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="email">Email:</label><br>
+    <input type="text" id="email" name="email"><br><br>
+    <button type="submit">Submit</button>
+  </form>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JavaScript Lab</title>
-  </head>
-
-  <body>
-    <script src="index.js"></script>
-  </body>
-
+  <script src="index.js"></script>
+  <script>
+    // Add event listener to the form submission
+    document.getElementById("dataForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent the default form submission
+      
+      // Get the values from the form
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      
+      // Call the submitData function with the form values
+      submitData(name, email)
+        .then(response => {
+          // Handle the response if needed
+          console.log(response);
+        })
+        .catch(error => {
+          // Handle any errors
+          console.error(error);
+        });
+    });
+  </script>
+</body>
 </html>
